@@ -1,0 +1,20 @@
+<div class="flex gap-8 p-8 rounded-lg shadow-xs dark:bg-gray-800">
+    <img src="{{data.image}}" alt="{{data.company}}" class="flex-none w-[70px] h-[70px] rounded-lg object-cover">
+    <div class="flex-grow">
+        <p class="text-lg font-semibold dark:text-white">{{data.role}}</p>
+        <p class="mb-4 text-sm text-green-600 dark:text-green-400">{{data.company}}</p>
+        <ul class="mb-4 space-y-2 list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+            {{#each data.tasks}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <div class="flex gap-2">
+            {{#each data.tech_stacks}}
+            <div class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700">
+                <p class="text-xs font-medium text-gray-600 dark:text-gray-400">{{this}}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <p class="text-sm text-gray-600 dark:text-gray-400">{{data.date}}</p>
+</div>
