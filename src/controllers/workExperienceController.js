@@ -46,7 +46,7 @@ export async function create(req, res) {
         '${req.body.role}', 
         '${req.body.company}', 
         '${await saveFile(req.files.image)}', 
-        '{${req.body.tasks.replaceAll('\n', ',')}}', 
+        '{${req.body.tasks.replaceAll(',', '&#44;').replaceAll('\n', ',')}}', 
         '{${req.body['tech_stacks[]'].join(',')}}',
         '${req.body.start_date}',
         '${req.body.end_date}'
@@ -72,7 +72,7 @@ export async function update(req, res) {
 	SET  
     role='${req.body.role}', 
     company='${req.body.company}',  
-    tasks='{${req.body.tasks.replaceAll('\n', ',')}}', 
+    tasks='{${req.body.tasks.replaceAll(',', '&#44;').replaceAll('\n', ',')}}', 
     tech_stacks='{${req.body['tech_stacks[]'].join(',')}}', 
     start_date='${req.body.start_date}', 
     end_date='${req.body.end_date}'
