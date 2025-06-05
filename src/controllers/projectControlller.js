@@ -33,7 +33,11 @@ export async function create(req, res) {
         '${req.body.name}', 
         '${req.body.description}', 
         '${await saveFile(req.files.image)}',
-        '{${req.body['tech_stacks[]'].join(',')}}',
+        '{${
+            Array.isArray(req.body['tech_stacks[]']) ?
+            req.body['tech_stacks[]'].join(',') : 
+            req.body['tech_stacks[]'] ?? 'Any'
+        }}',
         '${req.body.github}',
         '${req.body.demo}'
     );`)
@@ -58,7 +62,11 @@ export async function update(req, res) {
 	SET 
     name='${req.body.name}', 
     description='${req.body.description}', 
-    tech_stacks='{${req.body['tech_stacks[]'].join(',')}}', 
+    tech_stacks='{${
+            Array.isArray(req.body['tech_stacks[]']) ?
+            req.body['tech_stacks[]'].join(',') : 
+            req.body['tech_stacks[]'] ?? 'Any'
+        }}',
     github='${req.body.github}', 
     demo='${req.body.demo}'
     ${image ? `,image='${await saveFile(image)}'` : ''}

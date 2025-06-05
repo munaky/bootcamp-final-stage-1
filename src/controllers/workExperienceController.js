@@ -47,7 +47,11 @@ export async function create(req, res) {
         '${req.body.company}', 
         '${await saveFile(req.files.image)}', 
         '{${req.body.tasks.replaceAll(',', '&#44;').replaceAll('\n', ',')}}', 
-        '{${req.body['tech_stacks[]'].join(',')}}',
+        '{${
+            Array.isArray(req.body['tech_stacks[]']) ?
+            req.body['tech_stacks[]'].join(',') : 
+            req.body['tech_stacks[]'] ?? 'Any'
+        }}',
         '${req.body.start_date}',
         '${req.body.end_date}'
     );`)
@@ -73,7 +77,11 @@ export async function update(req, res) {
     role='${req.body.role}', 
     company='${req.body.company}',  
     tasks='{${req.body.tasks.replaceAll(',', '&#44;').replaceAll('\n', ',')}}', 
-    tech_stacks='{${req.body['tech_stacks[]'].join(',')}}', 
+    tech_stacks='{${
+            Array.isArray(req.body['tech_stacks[]']) ?
+            req.body['tech_stacks[]'].join(',') : 
+            req.body['tech_stacks[]'] ?? 'Any'
+        }}',
     start_date='${req.body.start_date}', 
     end_date='${req.body.end_date}'
     ${image ? `,image='${await saveFile(image)}'` : ''}
