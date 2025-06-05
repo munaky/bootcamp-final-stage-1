@@ -31,7 +31,6 @@ app.use(session({
   secret: 'p3Rsona1$Web%👍',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
 }))
 app.use(cookieParser('p3Rsona1$Web%👍'))
 app.use(flash())
