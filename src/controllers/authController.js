@@ -14,7 +14,10 @@ export async function register(req, res) {
     const email_exists = await executeQuery(`SELECT * FROM users WHERE email='${req.body.email}'`)
         .then(r => r.rows.length > 0 ? true : false)
 
-    if (email_exists) return res.redirect('/auth/register');
+    if (email_exists) {
+        req.flash('fail', 'Email sudah terdaftar.');
+        return res.redirect('/auth/register');
+    };
 
     await executeQuery(`INSERT INTO users(name, email, password, image)
         VALUES(
