@@ -1,0 +1,130 @@
+<div class="grow p-3 rounded bg-gray-100">
+    <div class="max-w-fit mb-5">
+        <p class="text-3xl font-bold break-words text-slate-800">
+            Work Experience <span class="text-2xl">/ Update</span>
+        </p>
+        <hr class="rounded-full border border-orange-500">
+    </div>
+    <form action="/admin/work-experience/update" method="post" enctype="multipart/form-data"
+        class="flex flex-col items-center p-3 rounded shadow space-y-5 bg-white">
+        <input type="hidden" name="id" value="{{id}}">
+        <div class="flex flex-col w-[300px]">
+            <label for="role" class="font-bold text-slate-800">Role</label>
+            <input id="role" name="role" type="text" placeholder="Your Role" required value="{{role}}"
+                class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="company" class="font-bold text-slate-800">Company</label>
+            <input id="company" name="company" type="text" placeholder="Company Name" required value="{{company}}"
+                class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="tasks" class="font-bold text-slate-800">Tasks <span class="text-xs text-slate-400">*seperated by
+                    row</span></label>
+            <textarea id="tasks" name="tasks" rows="4" placeholder="Your Tasks" required style="resize: none;"
+                class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">{{tasks}}</textarea>
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="tech_stack" class="font-bold text-slate-800">Tech Stacks</label>
+            <div class="flex gap-2">
+                <input id="tech_stack" type="text" placeholder="Tech Stack You Use"
+                    class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+                <a id="add_tech_stack"
+                    class="py-1 px-2 rounded font-bold text-white bg-green-500 hover:bg-green-600">Add</a>
+            </div>
+            <div id="list_tech_stack" class="flex flex-wrap gap-2 mt-3">
+                {{!-- Dynamic Content --}}
+                {{#each tech_stacks}}
+                <div class="flex gap-2 items-center justify-between min-w-min px-3 py-1 rounded-full bg-gray-200">
+                    <input type="hidden" name="tech_stacks[]" value="{{this}}">
+                    <p class="text-xs font-bold text-slate-800">
+                        {{this}}
+                    </p>
+                    <a id="remove_tech_stack" class="transition-transform hover:scale-125">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"
+                            fill="none" class="stroke-red-500">
+                            <g id="Menu / Close_SM">
+                                <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="start_date" class="font-bold text-slate-800">Start Date</label>
+            <input id="start_date" name="start_date" type="date" required value="{{start_date}}"
+                class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="end_date" class="font-bold text-slate-800">End Date</label>
+            <input id="end_date" name="end_date" type="date" value="{{end_date}}"
+                class="w-full p-1 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+        </div>
+        <div class="flex flex-col w-[300px]">
+            <label for="image" class="font-bold text-slate-800">Image</label>
+            <input id="image" name="image" type="file" accept="image/*"
+                class="w-full p-1 file:mr-4 focus:outline-none font-medium rounded border border-gray-100 text-slate-800 bg-gray-100 hover:bg-gray-200">
+            <img id="preview" src="{{image}}" alt="Preview" class="m-auto mt-3 w-[70px] h-[70px]">
+        </div>
+        <button type="submit" class="px-3 py-1 font-bold rounded-md text-lg text-white bg-green-500 hover:bg-green-600">
+            Submit
+        </button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('image').addEventListener('change', e => {
+        let preview = document.getElementById('preview')
+
+
+        preview.classList.remove('hidden');
+        preview.src = URL.createObjectURL(e.target.files[0]);
+
+    });
+
+    function initRemoveTechStack() {
+        let buttons = document.querySelectorAll('#remove_tech_stack');
+
+        for (let btn of buttons) {
+            btn.onclick = e => {
+                btn.parentElement.remove();
+            }
+        }
+    }
+
+    function createTechStack(tech_stack) {
+        return `
+        <div class="flex gap-2 items-center justify-between min-w-min px-3 py-1 rounded-full bg-gray-200">
+            <input type="hidden" name="tech_stacks[]" value="${tech_stack}">
+            <p class="text-xs font-bold text-slate-800">
+                ${tech_stack}
+            </p>
+            <a id="remove_tech_stack" class="transition-transform hover:scale-125">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"
+                    fill="none" class="stroke-red-500">
+                    <g id="Menu / Close_SM">
+                        <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+            </a>
+        </div>
+        `;
+    }
+
+    document.getElementById('add_tech_stack').addEventListener('click', e => {
+        let tech_stack = document.getElementById('tech_stack').value;
+        let list_el = document.getElementById('list_tech_stack');
+
+        list_el.innerHTML += createTechStack(tech_stack);
+
+        initRemoveTechStack();
+
+        document.getElementById('tech_stack').value = '';
+    });
+
+    initRemoveTechStack();
+</script>

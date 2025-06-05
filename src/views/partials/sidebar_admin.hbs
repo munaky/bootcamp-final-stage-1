@@ -1,0 +1,101 @@
+<div class="hidden lg:block min-w-[250px] p-3"></div>
+<div id="sidebar-open" class="lg:hidden fixed p-1 right-2 top-2 rounded-full bg-blue-500">
+    <svg class="stroke-white" width="32px" height="32px" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 6H19M5 10H19M5 14H19M5 18H19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
+<div id="sidebar" class="hidden lg:block fixed h-[100%] left-0 top-0 p-3 w-[250px]">
+    <div class="flex flex-col h-full p-3 rounded-md shadow-lg bg-white">
+        <div class="flex flex-col gap-1 h-full">
+            <div class="flex justify-between items-center p-1 rounded">
+                <img src="{{user.image}}" alt="Profile Picture" class="me-2 w-[34px] h-[34px] rounded-full border border-slate-200">
+                <p class="me-1 grow truncate font-medium text-slate-800">{{user.name}}</p>
+                <a data-open-modal="modal-logout" class="shrink">
+                    <svg class="stroke-red-500" width="28px" height="28px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M15 16.5V19C15 20.1046 14.1046 21 13 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3H13C14.1046 3 15 3.89543 15 5V8.0625M11 12H21M21 12L18.5 9.5M21 12L18.5 14.5"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+            <hr class="mb-3 rounded-full">
+
+            <a href="/admin/dashboard" id="menu-dashboard" class="group flex p-1 hover:rounded hover:bg-blue-500">
+                <svg class="stroke-blue-900 group-hover:stroke-white" width="28px" height="28px" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M5.77778 10.2222V18C5.77778 19.1046 6.67321 20 7.77778 20H12M5.77778 10.2222L11.2929 4.70711C11.6834 4.31658 12.3166 4.31658 12.7071 4.70711L17.5 9.5M5.77778 10.2222L4 12M18.2222 10.2222V18C18.2222 19.1046 17.3268 20 16.2222 20H12M18.2222 10.2222L20 12M18.2222 10.2222L17.5 9.5M17.5 9.5V6M12 20V15"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="ml-3 mt-[4px] font-medium text-slate-800 group-hover:text-white">
+                    Dashboard
+                </p>
+            </a>
+
+            <a href="/admin/tech-stack" id="menu-tech-stack" class="group flex p-1 hover:rounded hover:bg-blue-500">
+                <svg class="stroke-blue-900 group-hover:stroke-white" width="28px" height="28px" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.3873 7.1575L11.9999 12L3.60913 7.14978" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M12 12V21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M11 2.57735C11.6188 2.22008 12.3812 2.22008 13 2.57735L19.6603 6.42265C20.2791 6.77992 20.6603 7.44017 20.6603 8.1547V15.8453C20.6603 16.5598 20.2791 17.2201 19.6603 17.5774L13 21.4226C12.3812 21.7799 11.6188 21.7799 11 21.4226L4.33975 17.5774C3.72094 17.2201 3.33975 16.5598 3.33975 15.8453V8.1547C3.33975 7.44017 3.72094 6.77992 4.33975 6.42265L11 2.57735Z"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M8.5 4.5L16 9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="ml-3 mt-[4px] font-medium text-slate-800 group-hover:text-white">
+                    Tech Stack
+                </p>
+            </a>
+
+            <a href="/admin/work-experience" id="menu-work-experience"
+                class="group flex p-1 hover:rounded hover:bg-blue-500">
+                <svg class="stroke-blue-900 group-hover:stroke-white" width="28px" height="28px" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4 10C4 8.89543 4.89543 8 6 8H18C19.1046 8 20 8.89543 20 10V10C20 11.6569 18.6569 13 17 13H7C5.34315 13 4 11.6569 4 10V10Z"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9 6C9 4.89543 9.89543 4 11 4H13C14.1046 4 15 4.89543 15 6V8H9V6Z" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="4" y="8" width="16" height="12" rx="2" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 12V14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M15 12V14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="ml-3 mt-[4px] font-medium text-slate-800 group-hover:text-white">
+                    Work Experience
+                </p>
+            </a>
+
+            <a href="/admin/project" id="menu-project" class="group flex p-1 hover:rounded hover:bg-blue-500">
+                <svg class="stroke-blue-900 group-hover:stroke-white" width="28px" height="28px" viewBox="0 0 24 24"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M4 10C4 8.89543 4.89543 8 6 8H18C19.1046 8 20 8.89543 20 10V10C20 11.6569 18.6569 13 17 13H7C5.34315 13 4 11.6569 4 10V10Z"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9 6C9 4.89543 9.89543 4 11 4H13C14.1046 4 15 4.89543 15 6V8H9V6Z" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="4" y="8" width="16" height="12" rx="2" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 12V14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M15 12V14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p class="ml-3 mt-[4px] font-medium text-slate-800 group-hover:text-white">
+                    Project
+                </p>
+            </a>
+        </div>
+
+        <div id="sidebar-close" class="shrink lg:hidden mx-auto mt-auto w-fit p-1 rounded-full bg-yellow-400">
+            <svg class="stroke-white" width="32px" height="32px" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 19L12.7071 12.7071C12.3166 12.3166 12.3166 11.6834 12.7071 11.2929L19 5" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11 19L4.70711 12.7071C4.31658 12.3166 4.31658 11.6834 4.70711 11.2929L11 5" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+</div>

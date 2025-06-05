@@ -1,0 +1,19 @@
+<div id="modal-logout" class="hidden fixed flex items-center justify-center px-1 inset-0" data-type="modal">
+    <div class="absolute inset-0 opacity-50 bg-gray-500"></div>
+    <form action="/auth/logout" method="GET" class="relative p-3 min-w-[300px] bg-white rounded-md shadow-md">
+        <div class="w-fit mx-auto">
+            <p class="text-lg font-bold text-slate-800">
+                Apakah Anda Yakin Ingin Logout?
+            </p>
+            <hr class="border rounded-full border-orange-500">
+        </div>
+        <div class="flex justify-around mt-5 text-center">
+            <button data-close-modal="modal-logout" class="px-3 py-1 font-bold rounded-md text-lg text-white bg-green-500 hover:bg-green-600">
+                Batal
+            </button>
+            <button type="submit" class="px-3 py-1 font-bold rounded-md text-lg text-white bg-red-500 hover:bg-red-600">
+                Logout
+            </button>
+        </div>
+    </form>
+</div>

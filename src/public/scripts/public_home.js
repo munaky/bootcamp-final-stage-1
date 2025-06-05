@@ -16,6 +16,3 @@ document.getElementById('theme-switch').addEventListener('click', () => {
 
     localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : '';
 })
-
-document.getElementById('experiences-content').innerHTML = makeExperiences(experiences);
-document.getElementById('projects-content').innerHTML = makeProjects(projects);

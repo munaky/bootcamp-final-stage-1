@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100">
+    {{#if messages.info}}
+    {{>toast_info message=messages.info}}
+    {{/if}}
+    {{#if messages.fail}}
+    {{>toast_fail message=messages.fail}}
+    {{/if}}
+    {{#if messages.success}}
+    {{>toast_success message=messages.success}}
+    {{/if}}
+
+    <div class="flex flex-row min-h-100vh">
+        {{>sidebar_admin}}
+        {{{body}}}
+    </div>
+
+    {{>modal_logout}}
+
+    <script src="/scripts/admin/global.js"></script>
+    <script src="/scripts/admin/sidebar.js"></script>
+</body>
+
+</html>

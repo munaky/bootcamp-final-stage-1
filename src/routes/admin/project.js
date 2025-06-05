@@ -1,5 +1,5 @@
 import express from 'express'
-import { view, viewCreate,  viewUpdate, create, update, remove } from '../../controllers/workExperienceController.js'
+import { view, viewCreate,  viewUpdate, create, update, remove } from '../../controllers/projectControlller.js'
 import isAuthenticated from '../../middleware/ValidateUser.js';
 
 const router = express.Router();
